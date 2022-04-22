@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {createStructuredSelector } from 'reselect';
-
 const GET_THINGS_REQUEST = "GET_THINGS_REQUEST";
 export const GET_THINGS_SUCCESS = "GET_THINGS_SUCCESS";
 
@@ -10,7 +9,7 @@ function getThings(){
   console.log("getThings()Action!")
   return (dispatch) => {
     dispatch({ type: GET_THINGS_REQUEST });
-    return fetch(`/api/v1/greetings.json`)
+    return fetch(`http://localhost:3000/greetings`)
       .then((response) => response.json())
       .then((json) => dispatch(getThingsSuccess(json)))
       .catch((error) => console.log(`Fetching Error ${error}`));
